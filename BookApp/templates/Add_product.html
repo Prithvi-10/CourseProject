@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends 'index.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="card-body">
+                  <h4 class="card-title">Enter Product Details</h4>
+<!--                  <p class="card-description">-->
+<!--                    Basic form elements-->
+<!--                  </p>-->
+                  <form class="forms-sample"
+                  method="post" action="{% url 'saveproduct' %}" enctype="multipart/form-data">
+                      {% csrf_token %}
+                    <div class="form-group">
+                      <select class="form-control" name="C_name" >
+                          <option>Select Category</option>
+                          {% for d in data %}
+                          <option>{{d.Name}}</option>
+                          {% endfor %}
+
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputEmail3">Product Name</label>
+                      <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Product Name" name="P_name">
+                    </div>
+
+                      <div class="form-group">
+                        <label for="exampleInputEmail14">Product Description</label>
+                        <input type="text" class="form-control" id="exampleInputEmail14" placeholder="Description" name="description">
+                      </div>
+                       <div class="form-group">
+                         <label for="exampleInputEmail5">Price</label>
+                         <input type="text" class="form-control" id="exampleInputEmail5" placeholder="Price" name="price">
+                       </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail16">Product Quantity</label>
+                        <input type="number" class="form-control" id="input-5" name="quantity" placeholder="Product Quantity" min="1" max="5" >
+                      </div>
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputPassword4">Password</label>-->
+<!--                      <input type="password" class="form-control" id="exampleInputPassword4" placeholder="Password">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleSelectGender">Gender</label>-->
+<!--                        <select class="form-control" id="exampleSelectGender">-->
+<!--                          <option>Male</option>-->
+<!--                          <option>Female</option>-->
+<!--                        </select>-->
+<!--                      </div>-->
+                    <div class="form-group">
+                      <label>Image</label><br><br>
+
+                      <input type="file" name="image" class="file-upload-browse btn btn-primary">
+<!--                      <div class="input-group col-xs-12">-->
+<!--                        <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image" name="image">-->
+<!--&lt;!&ndash;                        <span class="input-group-append">&ndash;&gt;-->
+<!--&lt;!&ndash;                          <button class="file-upload-browse btn btn-primary" type="button">Upload</button>&ndash;&gt;-->
+<!--&lt;!&ndash;                        </span>&ndash;&gt;-->
+<!--                      </div>-->
+                    </div>
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleInputCity1">City</label>-->
+<!--                      <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location">-->
+<!--                    </div>-->
+<!--                    <div class="form-group">-->
+<!--                      <label for="exampleTextarea1">Textarea</label>-->
+<!--                      <textarea class="form-control" id="exampleTextarea1" rows="4"></textarea>-->
+<!--                    </div>-->
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                </div>
+</body>
+</html>
+{% endblock %}
